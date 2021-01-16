@@ -1,129 +1,251 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+Flipkart-Round -1
+1)Rearrange the digits
 
-# C extensions
-*.so
+class Solution:
+    def smallestnum (self,N):
+        # code here
+        s=sorted([int(x) for x in str(N)])
+        a=""
+        z=""
+        for i in s:
+            if i==0:
+                z+=str(i)
+            else:
+                a+=str(i)
+        return int(a[0]+z+a[1:])
+        
+ 2)Mics & Jury
+    
+ //Initial Template for Java
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+import java.io.*;
+import java.util.*;
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+class GFG
+{
+    public static void main(String args[])throws IOException
+    {
+        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(read.readLine());
+        while(t-- > 0)
+        {
+            String input_line1[] = read.readLine().trim().split("\\s+");
+            int N = Integer.parseInt(input_line1[0]);
+            int M = Integer.parseInt(input_line1[1]);
+            String input_line[] = read.readLine().trim().split("\\s+");
+            int teams[]= new int[M];
+            for(int i = 0; i < M; i++)
+                teams[i] = Integer.parseInt(input_line[i]);
+            
+            Solution ob = new Solution();
+            System.out.println(ob.micsandjury(N,M,teams));
+        }
+    }
+}
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+// } Driver Code Ends
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
 
-# Translations
-*.mo
-*.pot
+//User function Template for Java
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+ class Solution{
+    static int micsandjury(int N,int M,int[] teams){
+        //code here
+        int l=1,r=0,ans=0;
+        for(int i=0;i<M;i++){
+         if(r<teams[i]){
+         r=teams[i];
+         }
+        }
+        while(l<=r){
+            int mid=(l+r)/2;
+            int grp=0;
+            for(int i=0;i<M;i++){
+                if(teams[i]%mid!=0){
+                grp+=teams[i]/mid+1;}
+                else{
+                grp+=teams[i]/mid;}
+            }
+            if(grp>N){
+                l=mid+1;}
+            else{
+               	ans=mid;
+                r=mid-1;}
+        }
+        return ans;
+    }
+}
 
-# Flask stuff:
-instance/
-.webassets-cache
 
-# Scrapy stuff:
-.scrapy
+Flipkart-round-2
+1)Wave Array
 
-# Sphinx documentation
-docs/_build/
 
-# PyBuilder
-target/
+class Solution:
+    def convertToWave(self, arr, N):
+        arr.sort() 
+        for i in range(0,N-1,2):
+            arr[i], arr[i+1] = arr[i+1], arr[i]
+        return arr
+        
+        
+2)Strange Matrix
 
-# Jupyter Notebook
-.ipynb_checkpoints
 
-# IPython
-profile_default/
-ipython_config.py
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
 
-# pyenv
-.python-version
+import math
+def main():
+    T=int(input())
+    while(T>0):
+        N = int(input())
+        arr = [int(x) for x in input().split()]
+        ob = Solution()
+        ob.convertToWave(arr,N)
+        for i in arr:
+            print(i,end=" ")
+        print()
+        T-=1
 
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
+if __name__=="__main__":
+    main()
+# } Driver Code Ends
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-__pypackages__/
+2)Strange Matrix
+#Driver Code Starts
+#Initial Template for Python 3
 
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
+class A:
+    __B=None
+    __R=None
+    __C=None
+    def __init__(self, R, C,B):
+        self.__R=R
+        self.__B=B
+        self.__C=C
+    def __getP(self,i,j):
+        assert 0<=i and i<self.__R and 0<=j and j<self.__C
+        if(self.__B[i]>=j+1):
+            return 0
+        return 1
+    def get(self,i,j):
+        return self.__getP(i,j)
+        
 
-# SageMath parsed files
-*.sage.py
+ # } Driver Code Ends
 
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+#User function Template for python3
 
-# Spyder project settings
-.spyderproject
-.spyproject
+class Solution:
+    # do not edit this function
+    # use it to get the value of A[i][j]
+    def get(self, i, j):
+      return a.get(i,j)
+      
+    def solve(self, R, C):
+        maxi=0
+        j=-1
+        for i in range(C):
+            if(self.get(0,i)==1):
+                j=i
+                break
+        if(j==-1):
+            j=C-1
+        for i in range(R):
+            while(j>=0 and self.get(i,j)==1):
+                j-=1
+                maxi=i
+        return maxi
 
-# Rope project settings
-.ropeproject
 
-# mkdocs documentation
-/site
+#{ 
+#Driver Code Starts.
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
+if __name__ == "__main__":
+	t = int (input ())
+	for tc in range (t):
+		__R,__C = map(int,input().split())
+		__B=[int(i) for i in input().split()]
+		a=A(__R,__C,__B)
+		ob = Solution()
+		print(ob.solve(__R,__C))
+#} Driver Code Ends
 
-# Pyre type checker
-.pyre/
+
+Flipkart-round-3
+3)Next Permutations
+
+
+//Initial Template for Java
+
+
+import java.io.*;
+import java.util.*; 
+
+class GFG{
+    public static void main(String args[]) throws IOException { 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+  
+        
+        int t = Integer.parseInt(br.readLine()); 
+
+        while(t > 0){
+        	int N = Integer.parseInt(br.readLine()); 
+        	int[] perm = new int[N];
+        	String line = br.readLine(); 
+            String[] strs = line.trim().split("\\s+"); 
+        	for(int i=0; i<N; i++)
+        	{
+        		perm[i] = Integer.parseInt(strs[i]); 
+        	}
+        	
+
+            Solution ob = new Solution();
+			ob.nextPermutation(perm,N);
+			StringBuffer sb = new StringBuffer(); 
+            for (int i = 0; i < N; i++) 
+                sb.append(perm[i] + " "); 
+  
+            
+            System.out.println(sb); 
+
+            t--;
+        }
+    } 
+} 
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution 
+{ 
+    void nextPermutation(int perm[], int N)
+	{    
+	    // code here
+	    if(perm == null || N<=1)
+	    return;
+	    int i = N-2;
+	    while(i>=0 && perm[i]>=perm[i+1])
+	        i--;
+	    if(i>=0){
+	        int j = N-1;
+	        while(perm[j]<=perm[i])
+	            j--;
+	       swap(perm,i,j);
+	    }
+	    reverse(perm,i+1,N-1);
+        
+	}
+	public void swap(int perm[],int i,int j){
+	    int temp=perm[i];
+	    perm[i]=perm[j];
+	    perm[j]=temp;
+	}
+	public void reverse(int perm[],int i,int j){
+	    while(i<j) swap(perm,i++,j--);
+	}
+}
+
